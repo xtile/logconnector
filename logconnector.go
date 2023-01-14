@@ -25,6 +25,7 @@ import (
 	"io/ioutil"
 	"net/http"
 	"os"
+	"strconv"
 	"strings"
 	"time"
 )
@@ -73,6 +74,7 @@ func main() {
 		if err == nil {
 
 			text = strings.Trim(text, "\n")
+			text = strconv.Quote(text)
 
 			timestamp := time.Now()
 
