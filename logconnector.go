@@ -72,9 +72,13 @@ func main() {
 
 		if err == nil {
 
+			fmt.Printf("original string: %v", text)
 			text = strings.Trim(text, "\n")
 			text = strings.Replace(text, "\"", "'", -1)
+			text = strings.Replace(text, "`", "'", -1)
+
 			//text = strconv.Quote(text)
+			fmt.Printf("string after rework: %v", text)
 
 			timestamp := time.Now()
 
