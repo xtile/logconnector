@@ -45,6 +45,10 @@ func main() {
 	versionPtr := flag.String("version", "1.0", "version (only v1 supported so far)")
 	tableNamePtr := flag.String("table", "", "tablename")
 
+	flag.Parse()
+
+	fmt.Printf("Parameters: %v %v %v %v \n", *hostPtr, *servicePtr, *versionPtr, *tableNamePtr)
+
 	if hostPtr == nil || strings.Compare(*hostPtr, "") == 0 {
 		fmt.Printf("correct usage: %v -host <host> -app <appname> [-version <version>] -table <tablename>\n", os.Args[0])
 		os.Exit(-1)
@@ -59,8 +63,6 @@ func main() {
 		fmt.Printf("correct usage: %v -host <host> -app <appname> [-version <version>] -table <tablename>\n", os.Args[0])
 		os.Exit(-1)
 	}
-
-	flag.Parse()
 
 	url := fmt.Sprintf("https://api.us-east.tinybird.co/v0/events?name=%v", *tableNamePtr)
 
